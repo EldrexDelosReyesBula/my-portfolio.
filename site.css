@@ -1,0 +1,254 @@
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: var(--dark);
+            color: var(--light);
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Holographic effect */
+        .holographic {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .holographic {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        .holographic::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to bottom right,
+                    rgba(255, 255, 255, 0) 45%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    rgba(255, 255, 255, 0) 55%);
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+
+        .dark .holographic::before {
+            background: linear-gradient(to bottom right,
+                    rgba(0, 0, 0, 0) 45%,
+                    rgba(0, 0, 0, 0.1) 50%,
+                    rgba(0, 0, 0, 0) 55%);
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) rotate(30deg);
+            }
+
+            100% {
+                transform: translateX(100%) rotate(30deg);
+            }
+        }
+
+        /* Profile image hover effect */
+        .profile-img {
+            transition: all 0.5s ease;
+            filter: grayscale(20%);
+        }
+
+        .profile-img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Scroll animations */
+        [data-scroll] {
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        [data-scroll="fade-in"] {
+            transform: translateY(30px);
+        }
+
+        [data-scroll="fade-in"].is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        [data-scroll="slide-left"] {
+            transform: translateX(-50px);
+        }
+
+        [data-scroll="slide-left"].is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        [data-scroll="slide-right"] {
+            transform: translateX(50px);
+        }
+
+        [data-scroll="slide-right"].is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+
+        /* Floating elements */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Welcome animation container */
+        #welcome-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Like animation */
+        .like-animation {
+            animation: like 0.6s ease;
+        }
+
+        @keyframes like {
+            0% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(0.95);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Morphing text animation */
+        .morph-text {
+            animation: morph 8s ease-in-out infinite;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes morph {
+            0% {
+                filter: blur(0px);
+            }
+
+            50% {
+                filter: blur(1px);
+            }
+
+            100% {
+                filter: blur(0px);
+            }
+        }
+
+        /* Comment section styles */
+        .comment-section {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .comment {
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+            margin-bottom: 12px;
+        }
+
+        .comment-user {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .comment-text {
+            margin-top: 4px;
+        }
+
+        .comment-input {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        .dark .comment-input {
+            border-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        /* Review percentage */
+        .recommend-percentage {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 8px;
+        }
